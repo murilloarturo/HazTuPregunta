@@ -5,6 +5,8 @@ class User < ActiveRecord::Base
   	attr_accessible :login, :name, :lname, :username, :email, :password, :password_confirmation, 
                   	:remember_me
 
+  validates_uniqueness_of :username
+
     # Virtual attribute for authenticating by either username or email
 	# This is in addition to a real persisted field like 'username'
 	attr_accessor :login
