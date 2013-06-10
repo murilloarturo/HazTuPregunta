@@ -42,3 +42,9 @@ gem 'activeadmin', github: "gregbell/active_admin"
 gem "meta_search", '>= 1.1.0.pre'
 
 gem "devise", "~> 2.0.0"
+
+gem 'bootstrap-sass', '~> 2.3.1.3'
+
+gem 'simple_form'
+
+gem 'rails_bootstrap_navbar'

@@ -7,5 +7,13 @@ class ApplicationController < ActionController::Base
       		flash[:alert] = "Unauthorized Access!"
       		redirect_to root_path 
     	end
-  end
+  	end
+
+  	def after_sign_in_path_for(resource)
+		if current_user.superadmin?
+			admin_dashboard_path
+		else
+			user_path(current_user)
+		end
+	end
 end
