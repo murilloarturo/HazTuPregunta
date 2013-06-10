@@ -1,5 +1,7 @@
 ActiveAdmin.setup do |config|
 
+config.register_stylesheet 'active_admin_ex.css'
+
   # == Site Title
   #
   # Set the title that is displayed on the main layout
