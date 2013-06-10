@@ -1,0 +1,29 @@
+<Legend>Iniciar Sesión</Legend>
+
+<div class="well">
+
+	<%= simple_form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
+	  <div class="control-group">
+	    <label class="control-label" for="inputEmail"></label>
+	    <div class="controls">
+    		<%= f.input :email, :label => 'Correo Electrónico', :required => false, :autofocus => true, :placeholder => 'tucorreo@tuhost.com' %>
+	    </div>
+	  </div>
+	  <div class="control-group">
+	    <label class="control-label" for="inputPassword"></label>
+	    <div class="controls">
+    		<%= f.input :password, :required => false, :placeholder => 'contraseña', :label => 'Contraseña' %>
+	    </div>
+	  </div>
+	  <div class="control-group">
+	    <div class="controls">
+	      <label class="checkbox">
+    		<%= f.input :remember_me, :label => 'Recordar Datos', :as => :boolean if devise_mapping.rememberable? %>
+	      </label>
+    		<%= f.button :submit, "Iniciar Sesión" %>
+	    </div>
+	  </div>
+	<% end %>
+<%= render "links" %>
+
+</div>

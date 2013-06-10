@@ -1,0 +1,24 @@
+<h1>Listing users</h1>
+
+<table>
+  <tr>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @users.each do |user| %>
+
+  <h4><%= link_to user.email, user %></h4>
+  <p>
+    <%= time_ago_in_words user.created_at %> ago
+  </p>
+  <p>
+    <%= link_to 'Show', user %> |
+    <%= link_to 'Edit', edit_user_path(user) %> |
+    <%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %>
+  </p>
+
+<% end %>
+
+<%= link_to 'New User', new_user_path %>
