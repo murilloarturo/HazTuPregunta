@@ -1,21 +1,60 @@
-<%= link_to "Home", root_path, :class => 'brand' %>
-<ul class="nav">
-  <% if user_signed_in? %>
-    <li>
-    <%= link_to('Logout', destroy_user_session_path, :method=>'delete') %>
-    </li>
-  <% else %>
-    <li>
-    <%= link_to('Login', new_user_session_path)  %>
-    </li>
-  <% end %>
-  <% if user_signed_in? %>
-    <li>
-    <%= link_to('Edit account', edit_user_registration_path(current_user)) %>
-    </li>
-  <% else %>
-    <li>
-    <%= link_to('Sign up', new_user_registration_path)  %>
-    </li>
-  <% end %>
-</ul>
+<div class="navbar navbar-fixed-top">
+  <div class="navbar-inner">
+    <div class="container"><!-- Collapsable nav bar -->
+      <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </a>
+
+      <!-- Your site name for the upper left corner of the site -->
+      <%= link_to "HazTuPregunta", root_path, :class => 'brand' %>
+
+      <!-- Start of the nav bar content -->
+      <div class="nav-collapse"><!-- Other nav bar content -->
+
+      <!-- The drop down menu -->
+      <ul class="nav pull-right">
+        <% if user_signed_in? %>
+          <li>
+          <%= link_to('Ver Perfil', edit_user_registration_path(current_user)) %>
+          </li>
+        <% else %>
+          <li>
+          <%= link_to('Registrarse', new_user_registration_path)  %>
+          </li>
+        <% end %>
+        <li class="divider-vertical"></li>
+
+        <% if user_signed_in? %>
+          <li>
+          <%= link_to('Cerrar Sesión', destroy_user_session_path, :method=>'delete') %>
+          </li>
+        <% else %>
+          <li class="drop down">
+            <a class="dropdown-toggle" href="#" data-toggle="dropdown">Iniciar Sesión <strong class="caret"></strong></a>
+            <div class="dropdown-menu" style="padding: 15px; padding-bottom: 0px;">
+            <!-- Login form here -->
+            <%= simple_form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
+              <%= f.input :login, :label => 'Nombre de Usuario o Correo', :required => false, :autofocus => true, :placeholder => 'login' %>
+              <%= f.input :password, :required => false, :placeholder => 'contraseña', :label => 'Contraseña' %>
+              <label class="checkbox">
+                <%= f.input :remember_me, :label => 'Recordar Datos', :as => :boolean if devise_mapping.rememberable? %>
+              </label>
+              <%= f.button :submit, "Iniciar Sesión" %>
+              <% end %>
+              <%= render "devise/links" %>
+            </div>
+          </li>
+        <% end %>
+      </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+$('.dropdown-menu input, .dropdown-menu label').click(function(e) {
+    e.stopPropagation();
+});
+</script>
