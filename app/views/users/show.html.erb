@@ -1,5 +1,26 @@
-<p id="notice"><%= notice %></p>
-
-
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+<%= link_to "Volver", :back , :class => "btn btn-inverse" %><br><br>
+<div class="well row">
+<div class="well span3">
+<%= image_tag @user.avatar.url(:thumb) , :class => "img-circle" %>
+<h4><%= @user.name+" "+@user.lname %></h5>
+<% if current_user.name == @user.name %>
+<%= link_to 'Editar Perfil', edit_user_registration_path(@user) %><br><br>
+<% end %>
+<p>
+	Reputación:  
+</p>
+<p>
+	Favoritos:  
+</p>
+<p>
+	Mejores Respuestas:  
+</p>
+<p>
+	Antiguedad:  
+    <%= time_ago_in_words @user.created_at %>
+</p>
+</div>
+<p class="text-center">
+<h1 class="text-center">Preguntas Hechas</h1>
+</p>
+</div>

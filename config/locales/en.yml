@@ -1,5 +1,59 @@
 # Sample localization file for English. Add more files in this directory for other locales.
 # See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
-en:
-  hello: "Hello world"
+"en":
+  # Used in distance_of_time_in_words(), distance_of_time_in_words_to_now(), time_ago_in_words()
+  datetime:
+    distance_in_words:
+      half_a_minute: "medio minuto"
+      less_than_x_seconds:
+        one:   "menos de 1 segundo"
+        other: "menos de %{count} segundos"
+      x_seconds:
+        one:   "1 segundo"
+        other: "%{count} segundos"
+      less_than_x_minutes:
+        one:   "menos de un minuto"
+        other: "menos de %{count} minutos"
+      x_minutes:
+        one:   "1 minuto"
+        other: "%{count} minutos"
+      about_x_hours:
+        one:   "Cerca de 1 hora"
+        other: "Cerca de %{count} horas"
+      x_days:
+        one:   "1 día"
+        other: "%{count} dias"
+      about_x_months:
+        one:   "Cerca de 1 mes"
+        other: "Cerca de %{count} meses"
+      x_months:
+        one:   "1 mes"
+        other: "%{count} meses"
+      about_x_years:
+        one:   "Cerca de 1 año"
+        other: "Cerca de %{count} años"
+      over_x_years:
+        one:   "over 1 año"
+        other: "over %{count} años"
+      almost_x_years:
+        one:   "almost 1 año"
+        other: "almost %{count} años"
+    prompts:
+      year:   "Año"
+      month:  "Mes"
+      day:    "Día"
+      hour:   "Hora"
+      minute: "Minuto"
+      second: "Segundos"
+
+  helpers:
+    select:
+      # Default value for :prompt => true in FormOptionsHelper
+      prompt: "Por favor seleccione"
+
+    # Default translation keys for submit and button FormHelper
+    submit:
+      create: 'Crear %{model}'
+      update: 'Actualizar %{model}'
+      submit: 'Guardar %{model}'

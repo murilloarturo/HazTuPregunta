@@ -14,11 +14,8 @@
     <%= time_ago_in_words user.created_at %> ago
   </p>
   <p>
-    <%= link_to 'Show', user %> |
-    <%= link_to 'Edit', edit_user_path(user) %> |
-    <%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %>
+    <%= link_to 'Show', user %> | Ver preguntas o respuestas hechas...
   </p>
 
 <% end %>
 
-<%= link_to 'New User', new_user_path %>

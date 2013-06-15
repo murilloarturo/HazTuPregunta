@@ -3,9 +3,11 @@ class User < ActiveRecord::Base
          	:rememberable, :trackable, :validatable, :registerable 
   	
   	attr_accessible :login, :name, :lname, :username, :email, :password, :password_confirmation, 
-                  	:remember_me
+                  	:remember_me, :avatar
 
   validates_uniqueness_of :username
+
+  has_attached_file :avatar, :styles => { :medium => "300x300>", :thumb => "100x100>" }, :default_url => "/images/:style/user-avatar.png"
 
     # Virtual attribute for authenticating by either username or email
 	# This is in addition to a real persisted field like 'username'
@@ -25,4 +27,7 @@ class User < ActiveRecord::Base
 	### This is the correct method you override with the code above
 	### def self.find_for_database_authentication(warden_conditions)
 	### end 
+
+  extend FriendlyId
+  friendly_id :username
 end

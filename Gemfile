@@ -48,3 +48,7 @@ gem 'bootstrap-sass', '~> 2.3.1.3'
 gem 'simple_form'
 
 gem 'rails_bootstrap_navbar'
+
+gem "paperclip", :git => "git://github.com/thoughtbot/paperclip.git"
+
+gem "friendly_id"

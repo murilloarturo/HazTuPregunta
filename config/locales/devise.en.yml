@@ -1,5 +1,5 @@
 # Thanks to Alberto Padilla https://gist.github.com/1330093
-es:
+"en":
   errors:
     messages:
       expired: "ha expirado, por favor pida uno nuevo"
