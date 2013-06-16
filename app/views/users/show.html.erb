@@ -1,11 +1,13 @@
 <%= link_to "Volver", :back , :class => "btn btn-inverse" %><br><br>
 <div class="well row">
 <div class="well span3">
+<div class="text-center">
 <%= image_tag @user.avatar.url(:thumb) , :class => "img-circle" %>
 <h4><%= @user.name+" "+@user.lname %></h5>
 <% if current_user.name == @user.name %>
 <%= link_to 'Editar Perfil', edit_user_registration_path(@user) %><br><br>
 <% end %>
+</div>
 <p>
 	Reputación:  
 </p>
