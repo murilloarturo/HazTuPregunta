@@ -6,6 +6,9 @@ class User < ActiveRecord::Base
                   	:remember_me, :avatar
 
   validates_uniqueness_of :username
+  validates_presence_of :username
+  validates_presence_of :name
+  validates_presence_of :lname
 
   has_attached_file :avatar, :styles => { :medium => "300x300>", :thumb => "100x100>" }, :default_url => "/images/:style/user-avatar.png"
 

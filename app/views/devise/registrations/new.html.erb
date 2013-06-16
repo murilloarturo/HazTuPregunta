@@ -1,20 +1,26 @@
-<h2>Sign up</h2>
+<h2 class="text-center">Registro</h2>
+<div class="row">
 
-<%= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
+<div class="well span8 offset2 text-center">
+<%= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name),:html => { :class => "form-horizontal" }) do |f| %>
   <%= f.error_notification %>
 
-  <div class="inputs">
-    <%= f.input :username, :required => true, :autofocus => true %>
-    <%= f.input :name, :required => true%>
-    <%= f.input :lname, :required => true%>
-    <%= f.input :email, :required => true%>
-    <%= f.input :password, :required => true %>
-    <%= f.input :password_confirmation, :required => true %>
-  </div>
+      <div class="row">
+        <div class="span1"></div>
+        <div class="span4">
+    <%= f.input :username, :label => 'Nombre de Usuario', :placeholder => 'login', :required => true, :autofocus => true %>
+    <%= f.input :name, :placeholder => 'nombre', :label => 'Nombre', :required => true %>
+    <%= f.input :lname, :placeholder => 'apellido', :label => 'Apellido', :required => true %>
+    <%= f.input :email, :required => true, :placeholder => 'email', :label => 'Correo electrónico' %>
+    <%= f.input :password, :required => true, :placeholder => 'contraseña', :label => 'Contraseña' %>
+    <%= f.input :password_confirmation, :required => true, :placeholder => 'contraseña de nuevo', :label => 'Repita la contraseña' %>
 
   <div class="actions">
-    <%= f.button :submit, "Sign up" %>
+    <%= f.button :submit, "Registrarse", :class => "btn btn-inverse" %>
   </div>
 <% end %>
 
-<%= render "links" %>
+</div>
+</div>
+</div>
+</div>

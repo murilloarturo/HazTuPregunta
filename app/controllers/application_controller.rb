@@ -10,10 +10,14 @@ class ApplicationController < ActionController::Base
   	end
 
   	def after_sign_in_path_for(resource)
-		if current_user.superadmin?
-			admin_dashboard_path
-		else
-			user_path(current_user)
-		end
-	end
+		  if current_user.superadmin?
+        admin_dashboard_path
+		  else
+        user_path(current_user)
+		  end
+    end
+    
+    def after_update_path_for(resource)
+        user_path(current_user)
+    end
 end

@@ -5,7 +5,7 @@ Users::Application.routes.draw do
 
   ActiveAdmin.routes(self)
 
-  resources :users
+  resources :users, :controllers => { :registrations => :registrations }
 
   match 'users/:id/edit' => 'devise/registrations#edit'
 
