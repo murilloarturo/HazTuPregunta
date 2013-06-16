@@ -12,6 +12,7 @@
         <p>
           <%= time_ago_in_words user.created_at %> ago
         </p>
+        <% if user_signed_in? %>
         <p>
           <% if current_user.following?(user) %>
             <%= link_to "Dejar de seguir", follow_destroy_path(:user_id => user.id) %>
@@ -21,6 +22,7 @@
             <%= link_to "Seguir", follow_create_path(:user_id => user.id)%> 
           <%  end %> | <%= link_to 'Show', user %> | Ver preguntas o respuestas hechas...
         </p>
+        <% end %>
       </div>
     </div>
     <% end %>
