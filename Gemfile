@@ -52,3 +52,5 @@ gem 'rails_bootstrap_navbar'
 gem "paperclip", :git => "git://github.com/thoughtbot/paperclip.git"
 
 gem "friendly_id"
+
+gem "acts_as_follower"

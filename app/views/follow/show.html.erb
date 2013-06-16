@@ -1,5 +1,4 @@
-<%= link_to "Volver", :back , :class => "btn btn-inverse" %><br><br>
-<h1>Usuarios</h1>
+<h1><%= params[:type]%></h1>
 
 <div class="well row">
   <% @users.in_groups_of(3, false).each do |row_users| %>
@@ -18,7 +17,7 @@
           <% elsif current_user.name == user.name %>
             Este eres tú 
           <% else %>
-            <%= link_to "Seguir", follow_create_path(:user_id => user.id)%> 
+            <%= link_to "Seguir", follow_create_path(:user_id => user.id) %> 
           <%  end %> | <%= link_to 'Show', user %> | Ver preguntas o respuestas hechas...
         </p>
       </div>
@@ -27,4 +26,3 @@
     </div>
   <% end %>
 </div>
-

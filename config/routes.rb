@@ -1,4 +1,10 @@
 Users::Application.routes.draw do
+  get "follow/create"
+
+  get "follow/destroy"
+
+  get "follow/show"
+
   root :to => 'home#index'
 
   devise_for :users
