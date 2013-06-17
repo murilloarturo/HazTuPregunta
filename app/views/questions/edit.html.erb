@@ -1,6 +1,23 @@
-<h1>Editing question</h1>
+<%= link_to "Volver", :back , :class => "btn btn-inverse" %><br><br>
+<h1>Editar Pregunta</h1>
 
-<%= render 'form' %>
+<div class="row">
 
-<%= link_to 'Show', @question %> |
-<%= link_to 'Back', questions_path %>
+<div class="well span8 offset2 text-center">
+<%= simple_form_for @question,:html => { :class => "form-horizontal" } do |f| %>
+  <%= f.error_notification %>
+
+      <div class="row">
+        <div class="span1"></div>
+        <div class="span4">
+    <%= f.input :title, :label => 'Pregunta', :placeholder => 'Escribe tu pregunta aquí', :required => true, :autofocus => true %>
+    <%= f.hidden_field :user_id, :value => current_user.id %>
+  <div class="actions">
+    <%= f.button :submit, "Registrar", :class => "btn btn-inverse" %>
+  </div>
+<% end %>
+
+</div>
+</div>
+</div>
+</div>

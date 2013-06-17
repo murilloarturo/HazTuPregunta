@@ -8,6 +8,8 @@ class User < ActiveRecord::Base
                   :remember_me, :avatar
 
   has_many :questions
+  has_many :qcomments
+  has_many :answers
 
   validates_uniqueness_of :username
   validates_presence_of :username

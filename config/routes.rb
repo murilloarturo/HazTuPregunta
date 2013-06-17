@@ -1,6 +1,20 @@
 Users::Application.routes.draw do
 
-  resources :questions
+  get "answers/create"
+
+  get "answers/edit"
+
+  get "answers/destroy"
+
+  get "qcomments/create"
+
+  get "qcomments/edit"
+
+  get "qcomments/destroy"
+
+  resources :questions do
+    resources :qcomments
+  end
 
 
   get "message/show"

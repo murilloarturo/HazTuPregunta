@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130617164449) do
+ActiveRecord::Schema.define(:version => 20130617192342) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -45,6 +45,14 @@ ActiveRecord::Schema.define(:version => 20130617164449) do
   add_index "activities", ["recipient_id", "recipient_type"], :name => "index_activities_on_recipient_id_and_recipient_type"
   add_index "activities", ["trackable_id", "trackable_type"], :name => "index_activities_on_trackable_id_and_trackable_type"
 
+  create_table "answers", :force => true do |t|
+    t.integer  "question_id"
+    t.integer  "user_id"
+    t.text     "text"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
   create_table "follows", :force => true do |t|
     t.integer  "followable_id",                      :null => false
     t.string   "followable_type",                    :null => false
@@ -77,6 +85,14 @@ ActiveRecord::Schema.define(:version => 20130617164449) do
 
   add_index "messages", ["ancestry"], :name => "index_messages_on_ancestry"
   add_index "messages", ["sent_messageable_id", "received_messageable_id"], :name => "acts_as_messageable_ids"
+
+  create_table "qcomments", :force => true do |t|
+    t.integer  "question_id"
+    t.integer  "user_id"
+    t.text     "text"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
 
   create_table "questions", :force => true do |t|
     t.string   "title"
