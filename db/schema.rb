@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130617044233) do
+ActiveRecord::Schema.define(:version => 20130617164449) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -77,6 +77,15 @@ ActiveRecord::Schema.define(:version => 20130617044233) do
 
   add_index "messages", ["ancestry"], :name => "index_messages_on_ancestry"
   add_index "messages", ["sent_messageable_id", "received_messageable_id"], :name => "acts_as_messageable_ids"
+
+  create_table "questions", :force => true do |t|
+    t.string   "title"
+    t.integer  "user_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "questions", ["user_id"], :name => "index_questions_on_user_id"
 
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "",    :null => false

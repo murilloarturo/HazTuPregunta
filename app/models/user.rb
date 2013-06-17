@@ -7,6 +7,8 @@ class User < ActiveRecord::Base
   attr_accessible :login, :name, :lname, :username, :email, :password, :password_confirmation, 
                   :remember_me, :avatar
 
+  has_many :questions
+
   validates_uniqueness_of :username
   validates_presence_of :username
   validates_presence_of :name

@@ -1,5 +1,8 @@
 Users::Application.routes.draw do
 
+  resources :questions
+
+
   get "message/show"
 
   get "message/destroy"
