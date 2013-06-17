@@ -8,12 +8,12 @@ Users::Application.routes.draw do
 
   get "qcomments/create"
 
-  get "qcomments/edit"
-
   get "qcomments/destroy"
 
   resources :questions do
     resources :qcomments
+
+    resources :answers
   end
 
 

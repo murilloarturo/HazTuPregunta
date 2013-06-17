@@ -1,9 +1,6 @@
-<%= link_to "Volver", :back , :class => "btn btn-inverse" %><br><br>
+<%= link_to "Volver", :back , :class => "btn btn-inverse" %>
+<%= link_to "Hacer una pregunta", new_question_path , :class => "btn btn-inverse" %><br><br>
 <h1>Lista de preguntas</h1>
-
-<p>
-<%= link_to 'Hacer una pregunta', new_question_path %>
-</p>
 
 <% @questions.each do |question| %>
   <h3> <%= link_to question.title, question %></h3>
@@ -11,8 +8,8 @@
   por <%= link_to question.user.username, question.user %>
   <p>
   <%= link_to 'Show', question %> |
-  <%= link_to 'Comentar'%> |
-  <%= link_to 'Responder'%>
+  <%= pluralize(question.qcomments.count, 'Comentario' , 'Comentarios' )%> |
+  <%= pluralize(question.answers.count, 'Respuesta', 'Respuestas')%>
   </p>
 <% end -%>
 

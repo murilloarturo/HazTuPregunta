@@ -1,4 +1,5 @@
-<%= link_to "Volver", :back , :class => "btn btn-inverse" %><br><br>
+<%= link_to "Volver", :back , :class => "btn btn-inverse" %>
+<%= link_to "Hacer una pregunta", new_question_path , :class => "btn btn-inverse" %><br><br>
 <h1><%= @question.title %></h1>
   Hace <%= time_ago_in_words @question.created_at %>
   por <%= link_to @question.user.username, @question.user %>
@@ -10,7 +11,7 @@
 <%= link_to 'Back', questions_path %>
 </p>
 
-<h5><%= @question.qcomments.count %> Comentarios</h5>
+<h5><%= pluralize(@question.qcomments.count, 'Comentario' , 'Comentarios' )%> </h5>
 <% @question.qcomments.each do |qcomment| %>
   	<p><%= link_to qcomment.user.username, qcomment.user %>:
 	<%= qcomment.text %>
@@ -28,4 +29,24 @@
     <%= f.hidden_field :user_id, :value => current_user.id %>
     <%= f.hidden_field :question_id, :value => @question.id %>
     <%= f.button :submit, "Hacer comentario"%>
+<% end %>
+
+<h3><%=  pluralize(@question.answers.count, 'Respuesta', 'Respuestas') %></h3>
+<% @question.answers.each do |answer| %>
+  	<p><%= link_to answer.user.username, answer.user %>:
+	<%= answer.text %>
+	<br>Hace <%= time_ago_in_words answer.created_at %> 
+  	<% if current_user.id == answer.user_id %>
+	<%= link_to 'Eliminar Respuesta', [@question, answer], :method => :delete, :confirm => "Esta seguro?" %>
+	</p>
+<% end %>
+<% end %>
+
+<%= simple_form_for [@question, @question.answers.build] do |f| %>
+  <%= f.error_notification %>
+
+    <%= f.text_area :text, :size => '30x5'%><br>
+    <%= f.hidden_field :user_id, :value => current_user.id %>
+    <%= f.hidden_field :question_id, :value => @question.id %>
+    <%= f.button :submit, "Publicar respuesta"%>
 <% end %>
