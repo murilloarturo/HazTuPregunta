@@ -1,8 +1,7 @@
 Users::Application.routes.draw do
+
   get "follow/create"
-
   get "follow/destroy"
-
   get "follow/show"
 
   root :to => 'home#index'
@@ -10,6 +9,9 @@ Users::Application.routes.draw do
   devise_for :users
 
   ActiveAdmin.routes(self)
+
+  resources :activities
+  get "activities/show"
 
   resources :users, :controllers => { :registrations => :registrations }
 

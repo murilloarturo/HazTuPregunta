@@ -15,6 +15,9 @@
 			<%= link_to "Seguidores: "+@user.followers_count.to_s, follow_show_path(:user_id => @user, :type => 'Seguidores')%>
 		</p>
 		<p>
+			<%= link_to "Actividad", activities_show_path(:user_id => @user)%>
+		</p>
+		<p>
 			Reputación:  
 		</p>
 		<p>

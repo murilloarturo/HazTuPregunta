@@ -1,17 +1,21 @@
 class FollowController < ApplicationController
   def create
-  	if current_user.following?(User.find(params[:user_id]))
+    @user = User.find(params[:user_id])
+  	if current_user.following?(@user)
     	flash[:notice] = "Ya estas siguiendo al usuario"
     else 	
-  		current_user.follow(User.find(params[:user_id]))
-    	flash[:notice] = "Eres seguidor"
+  		current_user.follow(@user)
+    	@user.create_activity key: 'follow.create', owner: current_user
+      flash[:notice] = "Eres seguidor"
     end
     redirect_to :back
   end
 
   def destroy
-	if current_user.following?(User.find(params[:user_id]))
-  		current_user.stop_following(User.find(params[:user_id]))
+  @user = User.find(params[:user_id])
+	if current_user.following?(@user)
+  		current_user.stop_following(@user)
+      @user.create_activity key: 'follow.destroy' , owner: current_user
     	flash[:notice] = "Ya no eres seguidor"
     else
     	flash[:notice] = "No estas siguiendo al usuario"

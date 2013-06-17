@@ -1,4 +1,6 @@
 class Follow < ActiveRecord::Base
+  include PublicActivity::Common
+  #tracked owner: ->(controller, model) { controller.current_user }  
 
   extend ActsAsFollower::FollowerLib
   extend ActsAsFollower::FollowScopes

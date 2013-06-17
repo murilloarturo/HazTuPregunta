@@ -1,5 +1,6 @@
 <%= link_to "Volver", :back , :class => "btn btn-inverse" %><br><br>
 <h1>Usuarios</h1>
+<%= link_to "Actividad", activities_path%>
 
 <div class="well row">
   <% @users.in_groups_of(3, false).each do |row_users| %>
