@@ -1,11 +1,16 @@
-<h1> Friend's Activities </h1>
+<%= link_to "Volver", :back , :class => "btn btn-inverse" %><br><br>
+<h1> Timeline </h1>
 
+<div class="well row span10">
 <% @activities.each do |activity| %>
-	<div class="well span3">
+	<div class = "row">
+	<div class="well span3 offset3">
 		<p>
 			<%= link_to activity.owner.name, activity.owner if activity.owner %>
 			<%= render_activity activity %>
 			<br>Hace <%= time_ago_in_words activity.created_at %>
 		</p>
 	</div>
+	</div>
 <% end %>
+</div>
