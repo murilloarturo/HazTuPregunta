@@ -34,12 +34,33 @@
 <h3><%=  pluralize(@question.answers.count, 'Respuesta', 'Respuestas') %></h3>
 <% @question.answers.each do |answer| %>
   	<p><%= link_to answer.user.username, answer.user %>:
-	<%= answer.text %>
-	<br>Hace <%= time_ago_in_words answer.created_at %> 
-  	<% if current_user.id == answer.user_id %>
-	<%= link_to 'Eliminar Respuesta', [@question, answer], :method => :delete, :confirm => "Esta seguro?" %>
+		<%= answer.text %>
+		<br>Hace <%= time_ago_in_words answer.created_at %> 
+  		<% if current_user.id == answer.user_id %>
+		<%= link_to 'Eliminar respuesta', [@question, answer], :method => :delete, :confirm => "Esta seguro?" %>
+		<% end %>
 	</p>
-<% end %>
+
+	<h6><%= pluralize(answer.acomments.count, 'Comentario' , 'Comentarios' )%> </h6>
+	<% answer.acomments.each do |acomment| %>
+	  	<p><%= link_to acomment.user.username, acomment.user %>:
+		<%= acomment.text %>
+		<br>Hace <%= time_ago_in_words acomment.created_at %> 
+	  	<% if current_user.id == acomment.user_id %>
+		<%= link_to 'Eliminar comentario', [@question, acomment], :method => :delete, :confirm => "Esta seguro?" %>
+		</p>
+		<% end %>
+	<% end %>
+
+	<%= simple_form_for [@question, @question.acomments.build] do |af| %>
+	  <%= af.error_notification %>
+
+	    <%= af.text_area :text, :size => '30x1'%><br>
+	    <%= af.hidden_field :user_id, :value => current_user.id %>
+	    <%= af.hidden_field :answer_id, :value => answer.id %>
+	    <%= af.button :submit, "Hacer comentario"%>
+	<% end %>
+
 <% end %>
 
 <%= simple_form_for [@question, @question.answers.build] do |f| %>

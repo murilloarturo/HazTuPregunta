@@ -10,6 +10,7 @@ class User < ActiveRecord::Base
   has_many :questions
   has_many :qcomments
   has_many :answers
+  has_many :acomments
 
   validates_uniqueness_of :username
   validates_presence_of :username

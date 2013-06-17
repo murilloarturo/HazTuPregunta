@@ -1,5 +1,9 @@
 Users::Application.routes.draw do
 
+  get "acomments/create"
+
+  get "acomments/destroy"
+
   get "answers/create"
 
   get "answers/edit"
@@ -11,9 +15,7 @@ Users::Application.routes.draw do
   get "qcomments/destroy"
 
   resources :questions do
-    resources :qcomments
-
-    resources :answers
+    resources :qcomments, :answers, :acomments
   end
 
 
@@ -34,7 +36,7 @@ Users::Application.routes.draw do
   resources :activities
   get "activities/show"
 
-  resources :users, :controllers => { :registrations => :registrations }
+  resources :users
 
   match 'users/:id/edit' => 'devise/registrations#edit'
 
