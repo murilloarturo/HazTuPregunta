@@ -1,5 +1,9 @@
 Users::Application.routes.draw do
 
+  get "message/show"
+
+  get "message/destroy"
+
   get "follow/create"
   get "follow/destroy"
   get "follow/show"

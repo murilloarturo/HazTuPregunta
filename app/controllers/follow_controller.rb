@@ -5,6 +5,7 @@ class FollowController < ApplicationController
     	flash[:notice] = "Ya estas siguiendo al usuario"
     else 	
   		current_user.follow(@user)
+      current_user.send_message(@user,  current_user.username+" te esta siguiendo.", " Nuevo Seguidor")
     	@user.create_activity key: 'follow.create', owner: current_user
       flash[:notice] = "Eres seguidor"
     end

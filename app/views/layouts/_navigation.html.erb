@@ -8,12 +8,12 @@
       </a>
 
       <!-- Your site name for the upper left corner of the site -->
-      <%= link_to "HazTuPregunta", root_path, :class => 'brand' %>
+      <%= link_to "HazTuPregunta", root_path, {:class => 'brand'}, { :title => "Inicio" } %>
       
       <div class="nav-collapse"><!-- Other nav bar content -->
         <ul class="nav">
           <li>
-            <%= link_to "Usuarios", users_path%>
+            <%= link_to "Usuarios", users_path, { :title => "Ver Usuarios" } %>
           </li>
         </ul>
       </div>
@@ -25,7 +25,10 @@
       <ul class="nav pull-right">
         <% if user_signed_in? %>
           <li>
-          <%= link_to(raw(current_user.name+' <i class="icon-user"></i>'), user_path(current_user)) %>
+          <%= link_to raw(current_user.name+' <i class="icon-user"></i>'), user_path(current_user), { :title => "Ver mi Perfil" }  %>
+          </li>
+          <li>
+          <%= link_to raw(current_user.received_messages.unreaded.count.to_s+' <i class="icon-comment"></i>'), message_show_path(:user_id => current_user), { :title => "Notificaciones" }  %>
           </li>
         <% else %>
           <li>
@@ -36,7 +39,7 @@
 
         <% if user_signed_in? %>
           <li>
-          <%= link_to(raw('Cerrar Sesión <i class="icon-off"></i>'), destroy_user_session_path, :method=>'delete') %>
+          <%= link_to raw('Cerrar Sesión <i class="icon-off"></i>'), destroy_user_session_path, :method=>'delete'%>
           </li>
         <% else %>
           <li class="drop down">

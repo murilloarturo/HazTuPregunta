@@ -1,0 +1,19 @@
+<%= link_to "Volver", :back , :class => "btn btn-inverse" %><br><br>
+<h1><%= current_user.name %>'s Notifications</h1>
+
+<div class="well row">
+
+	<% if current_user.received_messages.count == 0 %>
+		<%= "No tienes Mensajes" %>
+	<% end %>    
+
+  <% current_user.received_messages.process do |message| %>
+    <div class="well span3">
+      <div class="text-center">
+        <%= message.topic %><br>
+        Hace <%= time_ago_in_words message.created_at %>
+        | <%= link_to "Eliminar", message_destroy_path(:message_id => message.id) %>
+      </div>
+    </div>
+  <% end %>
+</div>

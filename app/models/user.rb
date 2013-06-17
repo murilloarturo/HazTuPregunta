@@ -22,6 +22,8 @@ class User < ActiveRecord::Base
 
   acts_as_follower
 
+  acts_as_messageable
+
 	# app/models/user.rb
 
   def self.find_first_by_auth_conditions(warden_conditions)

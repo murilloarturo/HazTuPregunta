@@ -56,3 +56,5 @@ gem "friendly_id"
 gem "acts_as_follower"
 
 gem "public_activity"
+
+gem "acts-as-messageable"
