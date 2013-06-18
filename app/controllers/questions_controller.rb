@@ -3,12 +3,16 @@ class QuestionsController < ApplicationController
   # GET /questions
   # GET /questions.json
   def index
+    if current_user && current_user.superadmin?
+        redirect_to admin_dashboard_path
+    else
     @questions = Question.all
 
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @questions }
     end
+  end
   end
 
   # GET /questions/1

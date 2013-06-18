@@ -6,13 +6,27 @@
 <div class="well span8 offset2 text-center">
 <%= simple_form_for @question,:html => { :class => "form-horizontal" } do |f| %>
   <%= f.error_notification %>
-
-      <div class="row">
-        <div class="span1"></div>
+<div class="row">
+        <div class=""></div>
         <div class="span4">
-    <%= f.input :title, :label => 'Pregunta', :placeholder => 'Escribe tu pregunta aquí', :required => true, :autofocus => true %>
-    <%= f.text_area :text, :label => 'Contenido', :placeholder => 'Más información sobre la pregunta.'%>
-    <%= f.hidden_field :user_id, :value => current_user.id %>
+       		<div class="row">
+        	<div class="span1">
+        		Titulo 
+        	</div>
+        	<div class="span3">
+    			<%= f.input_field :title, :label => 'Pregunta', :placeholder => 'Escribe tu pregunta aquí', :autofocus => true %><br><br>
+        	</div>
+        	</div>
+
+        	<div class="row">
+        	<div class="span1">
+        		Contenido 
+        	</div>
+        	<div class="span3">
+    			<%= f.text_area :text, :class =>"input-xxlarge", :size => '30x5', :label => 'Contenido', :placeholder => 'Más información sobre la pregunta.'%><br><br>
+        	</div>
+        	</div>
+    		<%= f.hidden_field :user_id, :value => current_user.id %>
   <div class="actions">
     <%= f.button :submit, "Registrar", :class => "btn btn-inverse" %>
   </div>
