@@ -34,7 +34,7 @@
 			<%= simple_form_for [@question, @question.qcomments.build], :id => "form1" do |f| %>
 			  <%= f.error_notification %>
 
-			    <%= f.text_area :text, :size => '30x1'%><br>
+			    <%= f.text_area :text, :class =>"input-xlarge", :size => '30x1'%><br>
 			    <%= f.hidden_field :user_id, :value => current_user.id %>
 			    <%= f.hidden_field :question_id, :value => @question.id %>
 			    <%= f.button :submit, "Comentar pregunta"%>
@@ -73,7 +73,7 @@
 		<%= simple_form_for [@question, @question.acomments.build] do |af| %>
 		  <%= af.error_notification %>
 
-		    <%= af.text_area :text, :size => '30x1'%><br>
+		    <%= af.text_area :text, :class =>"xinput-large", :size => '30x1'%><br>
 		    <%= af.hidden_field :user_id, :value => current_user.id %>
 		    <%= af.hidden_field :answer_id, :value => answer.id %>
 		    <%= af.button :submit, "Comentar respuesta"%>
@@ -87,7 +87,7 @@
 			<%= simple_form_for [@question, @question.answers.build] do |f| %>
 			  <%= f.error_notification %>
 
-			    <%= f.text_area :text, :size => '30x2'%><br>
+			    <%= f.text_area :text, :class => "input-xxlarge", :size => '30x5'%><br>
 			    <%= f.hidden_field :user_id, :value => current_user.id %>
 			    <%= f.hidden_field :question_id, :value => @question.id %>
 			    <%= f.button :submit, "Publicar respuesta"%>

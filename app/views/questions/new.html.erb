@@ -8,7 +8,7 @@
   <%= f.error_notification %>
 
       <div class="row">
-        <div class="span2"></div>
+        <div class=""></div>
         <div class="span4">
        		<div class="row">
         	<div class="span1">
@@ -24,7 +24,7 @@
         		Contenido 
         	</div>
         	<div class="span3">
-    			<%= f.text_area :text, :size => '30x5', :label => 'Contenido', :placeholder => 'Más información sobre la pregunta.'%><br><br>
+    			<%= f.text_area :text, :class =>"input-xxlarge", :size => '30x5', :label => 'Contenido', :placeholder => 'Más información sobre la pregunta.'%><br><br>
         	</div>
         	</div>
     		<%= f.hidden_field :user_id, :value => current_user.id %>
