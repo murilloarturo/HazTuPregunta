@@ -27,7 +27,7 @@ Users::Application.routes.draw do
   get "follow/destroy"
   get "follow/show"
 
-  root :to => 'home#index'
+  root :to => 'questions#index'
 
   devise_for :users
 

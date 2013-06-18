@@ -4,5 +4,8 @@ class Question < ActiveRecord::Base
   has_many :answers
   has_many :acomments
   accepts_nested_attributes_for :answers
-  attr_accessible :title, :user_id
+  attr_accessible :title, :text, :user_id
+  
+
+  validates_presence_of :title
 end

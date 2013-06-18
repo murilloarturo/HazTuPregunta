@@ -1,5 +1,5 @@
 <%= link_to "Volver", :back , :class => "btn btn-inverse" %><br><br>
-<h1>Hacer Pregunta</h1>
+<h1 class="text-center">Hacer Pregunta</h1>
 
 <div class="row">
 
@@ -8,10 +8,26 @@
   <%= f.error_notification %>
 
       <div class="row">
-        <div class="span1"></div>
+        <div class="span2"></div>
         <div class="span4">
-    <%= f.input :title, :label => 'Pregunta', :placeholder => 'Escribe tu pregunta aquí', :required => true, :autofocus => true %>
-    <%= f.hidden_field :user_id, :value => current_user.id %>
+       		<div class="row">
+        	<div class="span1">
+        		Titulo 
+        	</div>
+        	<div class="span3">
+    			<%= f.input_field :title, :label => 'Pregunta', :placeholder => 'Escribe tu pregunta aquí', :autofocus => true %><br><br>
+        	</div>
+        	</div>
+
+        	<div class="row">
+        	<div class="span1">
+        		Contenido 
+        	</div>
+        	<div class="span3">
+    			<%= f.text_area :text, :size => '30x5', :label => 'Contenido', :placeholder => 'Más información sobre la pregunta.'%><br><br>
+        	</div>
+        	</div>
+    		<%= f.hidden_field :user_id, :value => current_user.id %>
   <div class="actions">
     <%= f.button :submit, "Registrar", :class => "btn btn-inverse" %>
   </div>

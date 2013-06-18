@@ -11,6 +11,7 @@
         <div class="span1"></div>
         <div class="span4">
     <%= f.input :title, :label => 'Pregunta', :placeholder => 'Escribe tu pregunta aquí', :required => true, :autofocus => true %>
+    <%= f.text_area :text, :label => 'Contenido', :placeholder => 'Más información sobre la pregunta.'%>
     <%= f.hidden_field :user_id, :value => current_user.id %>
   <div class="actions">
     <%= f.button :submit, "Registrar", :class => "btn btn-inverse" %>
