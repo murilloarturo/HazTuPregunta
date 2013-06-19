@@ -1,4 +1,6 @@
 class Question < ActiveRecord::Base
+  include PublicActivity::Common
+  
   belongs_to :user
   has_many :qcomments
   has_many :answers

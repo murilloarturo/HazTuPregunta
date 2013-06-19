@@ -6,13 +6,13 @@ class QuestionsController < ApplicationController
     if current_user && current_user.superadmin?
         redirect_to admin_dashboard_path
     else
-    @questions = Question.all
+      @questions = Question.all
 
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @questions }
+      respond_to do |format|
+        format.html # index.html.erb
+        format.json { render json: @questions }
+      end
     end
-  end
   end
 
   # GET /questions/1
@@ -39,6 +39,7 @@ class QuestionsController < ApplicationController
 
   # GET /questions/1/edit
   def edit
+
     @question = Question.find(params[:id])
   end
 
@@ -49,6 +50,7 @@ class QuestionsController < ApplicationController
 
     respond_to do |format|
       if @question.save
+        @question.create_activity key: 'question.create', owner: current_user
         format.html { redirect_to @question, notice: 'Question was successfully created.' }
         format.json { render json: @question, status: :created, location: @question }
       else
