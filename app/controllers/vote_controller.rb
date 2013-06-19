@@ -15,7 +15,7 @@ class VoteController < ApplicationController
 
     	flash[:notice] = "Voto guardado"
   	else
-    	flash[:alert] = "No puedes votar dos veces en la misma pregunta."
+    	flash[:alert] = "No puedes votar dos veces en la misma respuesta."
   	end
   	redirect_to @question
   end
