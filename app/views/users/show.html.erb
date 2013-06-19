@@ -30,7 +30,20 @@
 		    <%= time_ago_in_words @user.created_at %>
 		</p>
 	</div>
+	<div class="span7 text-center">
 	<p class="text-center">
-		<h1 class="text-center">Preguntas Hechas</h1>
+		<h2 class="text-center">Preguntas realizadas</h2>
 	</p>
+
+	<% current_user.questions.each do |question| %>
+  		<h3> <%= link_to question.title, question %></h3>
+		  Hace <%= time_ago_in_words question.created_at %>
+		  por <%= link_to question.user.username, question.user %>
+		  <p>
+		  <%= link_to 'Show', question %> |
+		  <%= pluralize(question.qcomments.count, 'Comentario' , 'Comentarios' )%> |
+		  <%= pluralize(question.answers.count, 'Respuesta', 'Respuestas')%>
+		  </p>
+	<% end -%>
+	</div>
 </div>

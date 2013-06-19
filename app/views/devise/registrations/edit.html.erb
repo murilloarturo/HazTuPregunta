@@ -1,7 +1,5 @@
-<h2>Editar <%= resource_name.to_s.humanize %></h2>
-
-<%= link_to "Volver", :back %><br>
-
+<h2>Editar perfil</h2>
+<div class="well span8 offset2 text-center">
 <%= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
   <%= f.error_notification %>
 
@@ -10,13 +8,14 @@
       Imagen de Perfil
     </label>
     <%= f.file_field :avatar, :id => "file"%>
-    <%= f.input :username, :required => true, :autofocus => true %>
-    <%= f.input :name, :required => true%>
-    <%= f.input :lname, :required => true%>
-    <%= f.input :email, :required => true%>
-    <%= f.input :password, :autocomplete => "off", :hint => "En blanco si no desea cambiarla", :required => false %>
-    <%= f.input :password_confirmation, :required => false %>
-    <%= f.input :current_password, :hint => "Para confirmar sus datos ingrese su contraseña.", :required => true %>
+    <%= f.input :username, :required => true, :label => "Nombre usuario", :autofocus => true %>
+    <%= f.input :name, :required => true, :label => "Nombre" %>
+    <%= f.input :lname, :required => true, :label => "Apellido" %>
+    <%= f.input :email, :required => true, :label => "Correo" %>
+    <%= f.input :password, :autocomplete => "off" , :label => "Contraseña", :hint => "En blanco si no desea cambiarla", :required => false %>
+    <%= f.input :password_confirmation, :required => false, :label => "Confirmar contraseña" %>
+<hr size="5px" height="1px" color="silver">
+    <%= f.input :current_password, :label => "Contraseña actual", :hint => "Para confirmar sus cambios ingrese su contraseña.", :required => true %>
   </div>
 
   <div class="actions">
@@ -24,7 +23,8 @@
   </div>
 <% end %>
 
-<h3>Cancelar mi cuenta</h3>
+<hr size="5px" height="1px" color="silver">
+<h4>Cancelar mi cuenta</h4>
 
 <p>No quieres regresar? <%= link_to "Eliminar mi cuenta", registration_path(resource_name), :confirm => "¿Está seguro?", :method => :delete %>.</p>
-
+</div>
