@@ -1,5 +1,9 @@
 Users::Application.routes.draw do
 
+  get "vote/add"
+
+  get "vote/remove"
+
   get "acomments/create"
 
   get "acomments/destroy"
@@ -13,6 +17,8 @@ Users::Application.routes.draw do
   get "qcomments/create"
 
   get "qcomments/destroy"
+
+  post "questions/mejor_respuesta"
 
   resources :questions do
     resources :qcomments, :answers, :acomments

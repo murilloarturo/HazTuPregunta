@@ -58,6 +58,7 @@ ActiveRecord::Schema.define(:version => 20130617205657) do
     t.integer  "question_id"
     t.integer  "user_id"
     t.text     "text"
+    t.integer  "votos"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
   end
@@ -107,8 +108,9 @@ ActiveRecord::Schema.define(:version => 20130617205657) do
     t.string   "title"
     t.text     "text"
     t.integer  "user_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.integer  "mejor_respuesta"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
   end
 
   add_index "questions", ["user_id"], :name => "index_questions_on_user_id"

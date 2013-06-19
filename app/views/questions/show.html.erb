@@ -19,14 +19,14 @@
 		<h6><%= pluralize(@question.qcomments.count, 'Comentario' , 'Comentarios' )%> </h6>
 		<div class="text-right">
 		<% @question.qcomments.each do |qcomment| %>
-				<hr size="5px" height="1px" color="silver">
-			  	<p><small><%= link_to qcomment.user.username, qcomment.user %>:
+			<hr size="5px" height="1px" color="silver">
+			<p><small><%= link_to qcomment.user.username, qcomment.user %>:
 				<%= qcomment.text %>
-				<br>Hace <%= time_ago_in_words qcomment.created_at %> 
-			  	<% if current_user.id == qcomment.user_id %>
-				<%= link_to 'Eliminar comentario', [@question, qcomment], :method => :delete, :confirm => "Esta seguro?" %>
-				</small></p>
-			<% end %>
+				<br>Hace <%= time_ago_in_words qcomment.created_at %></small> 
+				<% if current_user.id == qcomment.user_id %>
+					<%= link_to 'Eliminar comentario', [@question, qcomment], :method => :delete, :confirm => "Esta seguro?" %>
+				<% end %>
+			</p>
 		<% end %>
 		</div>
 		<%= link_to_function "Comentar", "$('#coment').toggle()" %>
@@ -37,7 +37,7 @@
 			    <%= f.text_area :text, :class =>"input-xlarge", :size => '30x1'%><br>
 			    <%= f.hidden_field :user_id, :value => current_user.id %>
 			    <%= f.hidden_field :question_id, :value => @question.id %>
-			    <%= f.button :submit, "Comentar pregunta"%>
+			    <%= f.button :submit, "Comentar pregunta", :class => "btn btn-inverse" %>
 			<% end %>
 		</div >
 	</div>
@@ -47,11 +47,13 @@
 		<hr size="5px" color="silver">
 		<div class="row">
 		<div class="span1 text-center">
-			<%= link_to image_tag("/images/arrow_up.png", :border => 0, :width => '20' , :height => '20', :alt => '', :title => 'Votar'), @question %><br>
-        	<%= @question.answers.count.to_s %><br>
-			<%= link_to image_tag("/images/arrow_down.png", :border => 0, :width => '20' , :height => '20', :alt => '', :title => 'Votar'), @question %><br>
-        	<% if current_user.id == @question.user_id %>
-			<br><%= link_to image_tag("/images/check.png", :border => 0, :width => '20' , :height => '20', :alt => '', :title => 'Verificar'), @question %>
+			<%= link_to image_tag("/images/up.png", :border => 0, :width => '20' , :height => '20', :alt => '', :title => 'Votar'), vote_add_path(:Qid => @question.id, :Aid => answer.id) %><br>
+        	<%= answer.votos %><br>
+			<%= link_to image_tag("/images/down.png", :border => 0, :width => '20' , :height => '20', :alt => '', :title => 'Votar'), vote_remove_path(:Qid => @question.id, :Aid => answer.id) %><br>
+        	<% if current_user.id == @question.user_id && @question.mejor_respuesta == nil %>
+				<br><%= link_to image_tag("/images/check.png", :border => 0, :width => '20' , :height => '20', :alt => '', :title => 'Verificar'), questions_mejor_respuesta_path(:Qid => @question.id, :Aid => answer.id) , :method => 'post' %>
+			<% elsif @question.mejor_respuesta == answer.id %>
+				<br><%= image_tag("/images/check.png", :border => 0, :width => '20' , :height => '20', :alt => '', :title => 'Verificada')%>
         	<% end %>
 		</div>
 		<div class="span7">
@@ -87,7 +89,7 @@
 		    <%= af.text_area :text, :class =>"xinput-large", :size => '30x1'%><br>
 		    <%= af.hidden_field :user_id, :value => current_user.id %>
 		    <%= af.hidden_field :answer_id, :value => answer.id %>
-		    <%= af.button :submit, "Comentar respuesta"%>
+		    <%= af.button :submit, "Comentar respuesta", :class => "btn btn-inverse" %>
 		<% end %>
 		</div>
 
@@ -101,7 +103,8 @@
 			    <%= f.text_area :text, :class => "input-xxlarge", :size => '30x5'%><br>
 			    <%= f.hidden_field :user_id, :value => current_user.id %>
 			    <%= f.hidden_field :question_id, :value => @question.id %>
-			    <%= f.button :submit, "Publicar respuesta"%>
+			    <%= f.hidden_field :votos, :value => 0 %>
+			    <%= f.button :submit, "Publicar respuesta", :class => "btn btn-inverse" %>
 			<% end %>
 		</div>
 	</div>

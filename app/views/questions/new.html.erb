@@ -27,7 +27,7 @@
     			<%= f.text_area :text, :class =>"input-xxlarge", :size => '30x5', :label => 'Contenido', :placeholder => 'Más información sobre la pregunta.'%><br><br>
         	</div>
         	</div>
-    		<%= f.hidden_field :user_id, :value => current_user.id %>
+    		  <%= f.hidden_field :user_id, :value => current_user.id %>
   <div class="actions">
     <%= f.button :submit, "Registrar", :class => "btn btn-inverse" %>
   </div>

@@ -85,4 +85,13 @@ class QuestionsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  def mejor_respuesta
+    @question = Question.find(params[:Qid])
+
+    @question.mejor_respuesta = params[:Aid]
+    @question.save
+
+    redirect_to @question
+  end
 end
