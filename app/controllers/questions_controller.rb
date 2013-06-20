@@ -93,7 +93,9 @@ class QuestionsController < ApplicationController
 
     @question.mejor_respuesta = params[:Aid]
     @question.save
-
+    @answer = Answer.find(params[:Aid])
+    @user = User.find(@answer.user_id)
+    current_user.send_message(@user, "Mejor_Respuesta" , @question.id)
     redirect_to @question
   end
 end

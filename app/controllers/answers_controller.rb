@@ -4,7 +4,10 @@ class AnswersController < ApplicationController
   	@answer = @question.answers.build(params[:answer])
   	@answer.save
     @question.create_activity key: 'answer.create', owner: current_user
-  	redirect_to @question
+    
+    @user = User.find(@question.user_id)
+    current_user.send_message(@user,  "Answer" , @question.id)
+    redirect_to @question
   end
 
   def edit

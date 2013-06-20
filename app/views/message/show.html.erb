@@ -1,4 +1,4 @@
-<h1><%= current_user.name %>'s Notifications</h1>
+<h3>Notificaciones</h3>
 
 <div class="well row">
 
@@ -9,7 +9,30 @@
   <% current_user.received_messages.process do |message| %>
     <div class="well span3">
       <div class="text-center">
-        <%= message.topic %><br>
+    <% case message.topic %>
+    <% when "Follow" %>
+      <% @user = User.find(message.body) if User.exists?(message.body)  %>
+      <%= link_to(@user.username , @user)+" te esta siguiendo."%><br>
+    <% when "Answer" %>
+      <% @question = Question.find(message.body) if Question.exists?(message.body) %>
+      Respondieron tu <%= link_to( "pregunta" , @question) %>.<br>
+    <% when "Mejor_Respuesta" %>
+      <% @question = Question.find(message.body) if Question.exists?(message.body) %>
+      Tu respuesta a esta <%= link_to( "pregunta" , @question) %> fue marcada como la mejor.<br>
+    <% when "Up" %>
+      <% @question = Question.find(message.body) if Question.exists?(message.body) %>
+      Tu respuesta a esta <%= link_to( "pregunta" , @question) %> recibió un voto positivo.<br>
+    <% when "Down" %>
+      <% @question = Question.find(message.body) if Question.exists?(message.body) %>
+      Tu respuesta a esta <%= link_to( "pregunta" , @question) %> recibió un voto negativo.<br>
+    <% when "Qcomment" %>
+      <% @question = Question.find(message.body) if Question.exists?(message.body) %>
+      Tu <%= link_to( "pregunta" , @question) %> fue comentada.<br>
+    <% when "Acomment" %>
+      <% @question = Question.find(message.body) if Question.exists?(message.body) %>
+      Tu respuesta a esta <%= link_to( "pregunta" , @question) %> fue comentada.<br>
+    <% else %>
+    <% end %> 
         Hace <%= time_ago_in_words message.created_at %>
         | <%= link_to "Eliminar", message_destroy_path(:message_id => message.id) %>
       </div>

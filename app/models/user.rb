@@ -7,11 +7,11 @@ class User < ActiveRecord::Base
   attr_accessible :login, :name, :lname, :username, :email, :password, :password_confirmation, 
                   :remember_me, :avatar
 
-  has_many :questions
-  has_many :qcomments
-  has_many :answers
-  has_many :acomments
-  has_many :votes
+  has_many :questions,  :dependent => :delete_all
+  has_many :qcomments,  :dependent => :delete_all
+  has_many :answers,    :dependent => :delete_all
+  has_many :acomments,  :dependent => :delete_all
+  has_many :votes,      :dependent => :delete_all
 
   validates_uniqueness_of :username
   validates_presence_of :username

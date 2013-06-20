@@ -4,6 +4,8 @@ class QcommentsController < ApplicationController
   	@qcomment = @question.qcomments.build(params[:qcomment])
   	@qcomment.save
 
+    @user = User.find(@question.user_id)
+    current_user.send_message(@user, "Qcomment" , @question.id)
   	redirect_to @question
   end
 

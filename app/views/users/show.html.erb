@@ -40,7 +40,7 @@
 		  Hace <%= time_ago_in_words question.created_at %>
 		  por <%= link_to question.user.username, question.user %>
 		  <p>
-		  <%= link_to 'Show', question %> |
+		  <%= link_to 'Detalles', question %> |
 		  <%= pluralize(question.qcomments.count, 'Comentario' , 'Comentarios' )%> |
 		  <%= pluralize(question.answers.count, 'Respuesta', 'Respuestas')%>
 		  </p>

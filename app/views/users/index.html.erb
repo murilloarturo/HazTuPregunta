@@ -1,14 +1,14 @@
 <h1>Usuarios</h1>
-<%= link_to "Actividad", activities_path%>
+<%= link_to "Actividad", activities_path, :class => "btn btn-inverse" %>
 
 <div class="well row">
   <% @users.in_groups_of(3, false).each do |row_users| %>
     <div class = "row">
     <% for user in row_users %>
     <div class="well span3">
-      <div class="text-center">
+      <div class='text-center'>
         <%= image_tag user.avatar.url(:thumb) , :class => "img-circle" %><br>
-        <%= link_to user.email, user %>
+        <%= link_to user.username, user %>
         <p>
           <%= time_ago_in_words user.created_at %> ago
         </p>

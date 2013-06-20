@@ -8,8 +8,8 @@
 	  por <%= link_to @question.user.username, @question.user %>
 	<p>
 	<% if current_user.id == @question.user_id %>
-		<%= link_to 'Edit', edit_question_path(@question) %> |
-		<%= link_to 'Delete', @question, :method => :delete, :confirm => "Esta seguro?" %> |
+		<%= link_to 'Editar', edit_question_path(@question) %> |
+		<%= link_to 'Eliminar', @question, :method => :delete, :confirm => "Esta seguro?" %>
 	<% end %>
 	</p>
 	<div class = "span7 offset1">
@@ -94,14 +94,17 @@
 		<hr size="5px" color="silver">
 		<%= link_to_function "Hacer una respuesta", "$('#respuesta').toggle()" %>
 		<div id="respuesta" class="row text-center" style="display:none;">
-			<%= simple_form_for [@question, @question.answers.build] do |f| %>
-			  <%= f.error_notification %>
-
-			    <%= f.text_area :text, :class => "input-xxlarge", :size => '30x5'%><br>
-			    <%= f.hidden_field :user_id, :value => current_user.id %>
-			    <%= f.hidden_field :question_id, :value => @question.id %>
-			    <%= f.hidden_field :votos, :value => 0 %>
-			    <%= f.button :submit, "Publicar respuesta", :class => "btn btn-inverse" %>
+			<% if current_user.id == @question.user_id %>
+				<%= "No puedes responder tu propia pregunta" %>
+			<% else %>
+				<%= simple_form_for [@question, @question.answers.build] do |f| %>
+			  	<%= f.error_notification %>
+				<%= f.text_area :text, :class => "input-xxlarge", :size => '30x5'%><br>
+				<%= f.hidden_field :user_id, :value => current_user.id %>
+				<%= f.hidden_field :question_id, :value => @question.id %>
+				<%= f.hidden_field :votos, :value => 0 %>
+				<%= f.button :submit, "Publicar respuesta", :class => "btn btn-inverse" %>
+				<% end %>
 			<% end %>
 		</div>
 	</div>

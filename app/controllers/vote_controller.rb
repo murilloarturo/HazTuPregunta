@@ -13,6 +13,8 @@ class VoteController < ApplicationController
   		@answer.votos += 1
   		@answer.save
 
+      @user = User.find(@answer.user_id)
+      current_user.send_message(@user, "Up" , @question.id)
     	flash[:notice] = "Voto guardado"
   	else
     	flash[:alert] = "No puedes votar dos veces en la misma respuesta."
@@ -35,6 +37,8 @@ class VoteController < ApplicationController
   		@answer.votos -= 1
   		@answer.save
 
+      @user = User.find(@answer.user_id)
+      current_user.send_message(@user, "Down" , @question.id)
     	flash[:notice] = "Voto guardado"
   	else
     	flash[:notice] = "No puedes votar dos veces en la misma pregunta."

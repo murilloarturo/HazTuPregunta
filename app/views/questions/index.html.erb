@@ -1,13 +1,13 @@
 <h1>Lista de preguntas</h1>
-
+<div class = "well text-center" >
 <% @questions.each do |question| %>
   <h3> <%= link_to question.title, question %></h3>
   Hace <%= time_ago_in_words question.created_at %>
   por <%= link_to question.user.username, question.user %>
   <p>
-  <%= link_to 'Show', question %> |
+  <%= link_to 'Detalles', question %> |
   <%= pluralize(question.qcomments.count, 'Comentario' , 'Comentarios' )%> |
   <%= pluralize(question.answers.count, 'Respuesta', 'Respuestas')%>
   </p>
-<% end -%>
-
+<% end %>
+</div>
