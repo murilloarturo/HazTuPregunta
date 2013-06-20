@@ -1,4 +1,6 @@
 class FollowController < ApplicationController
+  before_filter :authenticate_user!
+  
   def create
     @user = User.find(params[:user_id])
   	if current_user.following?(@user)
