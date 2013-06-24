@@ -4,6 +4,9 @@ class AddSuperadminToUser < ActiveRecord::Migration
                                     	:null => false, 
                                     	:default => false 
     		User.create! do |r|
+          r.username      = 'admin'
+          r.name      = 'administrador'
+          r.lname      = 'administrador'
       		r.email      = 'default@example.com'
       		r.password   = 'password'
       		r.superadmin = true

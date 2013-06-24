@@ -18,3 +18,7 @@
 
 4. Arranca el servidor de pruebas. (http://localhost:3000/):
        rails s
+
+5. Administrador por defecto
+		Username: 	admin  
+		Pass:		password
