@@ -1,5 +1,7 @@
 == HazTuPregunta.com
 
+	Prototipo de aplicacion web, basada en el modelo StackOverflow de preguntas y respuestas. Ademas un modelo de Usuario con la posiblidad de seguir usuarios y tener seguidores, y ver su actividad publica.
+
 == Instalacion
 
 1. Copia el repositorio a tu maquina:
@@ -19,6 +21,6 @@
 4. Arranca el servidor de pruebas. (http://localhost:3000/):
        rails s
 
-5. Administrador por defecto
-		Username: 	admin  
-		Pass:		password
+5. Datos administrador por defecto:
+       Username: admin  		Pass: password
+		
